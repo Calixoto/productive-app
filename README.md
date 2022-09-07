@@ -16,6 +16,10 @@ The first screens are "ToDo" and "Timer", they are the basis of productivity, wi
 
 - Updating project colors and logo
 
+## Bugs
+
+- When the localStorage was empty, the reducer returns undefined as it depends on the localstorage item, so the application crashed - Adjusted ✅
+
 ## Tech
 
 
