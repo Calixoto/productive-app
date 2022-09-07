@@ -3,6 +3,7 @@ import { DefaultLayout } from "./layout/DefaultLayout";
 import { History } from "./pages/History";
 
 import { Home } from "./pages/Home";
+import { TaskBoard } from "./pages/TaskBoard";
 
 export function Router() {
   return (
@@ -10,6 +11,7 @@ export function Router() {
       <Route path="/" element={<DefaultLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/history" element={<History />} />
+        <Route path="/tasks" element={<TaskBoard />} />
       </Route>
     </Routes>
   );

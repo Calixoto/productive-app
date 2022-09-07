@@ -18,4 +18,12 @@ export const defaultTheme = {
   "red-700": "#7A1921",
 
   "yellow-500": "#FBA94C",
+
+  purple: "#8284fa",
+  "purple-dark": "#5e60ce",
+
+  blue: "#4ea8de",
+  "blue-dark": "#1e6f9f",
+
+  danger: "#e25858",
 };
