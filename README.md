@@ -18,7 +18,7 @@ The first screens are "ToDo" and "Timer", they are the basis of productivity, wi
 
 ## Bugs
 
-- When the localStorage was empty, the reducer returns undefined as it depends on the localstorage item, so the application crashed - Adjusted ✅
+- When the localStorage was empty, the reducer returns undefined as it depends on the localstorage item, so the application crashed - Revised ✅
 
 ## Tech
 
