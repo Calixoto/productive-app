@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { EmptyTasks } from "../EmptyTasks";
 import { ListTasks } from "../ListTasks";
-import { TasksContainer } from "./styles";
+import { HeaderTask } from "./HeaderTask";
+import { ListTaskWrapper, TasksContainer } from "./styles";
 
 interface TasksProps {
   isEmpty: boolean;
@@ -34,34 +35,30 @@ export function Tasks({
   return (
     <TasksContainer>
       <div>
-        <section>
-          <h2>Tarefas criadas</h2>
-          <span>
-            <strong>{countTask}</strong>
-          </span>
-        </section>
-        <section>
-          <h2>Concluídas</h2>
-          <span>
-            <strong>
-              {countTask !== 0 ? countCompletedTask + " de " + countTask : 0}
-            </strong>
-          </span>
-        </section>
+        <HeaderTask title="Tarefas criadas" amount={countTask.toString()} />
+        <HeaderTask
+          title="Concluídas"
+          amount={
+            countTask !== 0 ? countCompletedTask + " de " + countTask : "0"
+          }
+        />
       </div>
-      {isEmpty ? (
-        <EmptyTasks />
-      ) : (
-        tasks.map((task) => (
-          <ListTasks
-            handleDeleteTask={() => handleDeleteTask(task.id)}
-            isActive={task.isCompleted}
-            handleCompleteTask={() => handleCompleteTask(task.id)}
-            taskText={task.text}
-            key={task.id}
-          />
-        ))
-      )}
+
+      <ListTaskWrapper>
+        {isEmpty ? (
+          <EmptyTasks />
+        ) : (
+          tasks.map((task) => (
+            <ListTasks
+              handleDeleteTask={() => handleDeleteTask(task.id)}
+              isActive={task.isCompleted}
+              handleCompleteTask={() => handleCompleteTask(task.id)}
+              taskText={task.text}
+              key={task.id}
+            />
+          ))
+        )}
+      </ListTaskWrapper>
     </TasksContainer>
   );
 }

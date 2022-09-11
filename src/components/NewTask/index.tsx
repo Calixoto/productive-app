@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { BsPlusCircle } from "react-icons/bs";
-import { NewTaskContainer } from "./styles";
+import { NewTaskContainer, NewTaskForm, SubmitNewTaskForm } from "./styles";
 
 interface NewTaskProps {
   handleGetText: (value: string) => void;
@@ -17,7 +17,7 @@ export function NewTask({ handleGetText }: NewTaskProps) {
 
   return (
     <NewTaskContainer>
-      <form onSubmit={handleClick}>
+      <NewTaskForm onSubmit={handleClick}>
         <input
           type="text"
           value={value}
@@ -26,10 +26,10 @@ export function NewTask({ handleGetText }: NewTaskProps) {
           }}
           placeholder="Adicione uma nova tarefa"
         />
-        <button type="submit">
+        <SubmitNewTaskForm type="submit">
           Criar <BsPlusCircle />
-        </button>
-      </form>
+        </SubmitNewTaskForm>
+      </NewTaskForm>
     </NewTaskContainer>
   );
 }

@@ -1,34 +1,54 @@
-import styled from "styled-components";
+import { NavLink } from "react-router-dom";
+import styled, { css } from "styled-components";
 
 export const HeaderContainer = styled.header`
+  max-width: 74rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 0 auto;
 
-  nav {
-    display: flex;
-    gap: 0.5rem;
+  padding: 1rem 2.5rem;
+  border-radius: 8px;
+`;
 
-    a {
-      width: 3rem;
-      height: 3rem;
+interface NavLinkProps {
+  active: boolean;
+}
 
-      display: flex;
-      justify-content: center;
-      align-items: center;
+export const NavContainer = styled.nav`
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+`;
 
-      color: ${(props) => props.theme["gray-100"]};
+export const Link = styled(NavLink)<NavLinkProps>`
+  position: relative;
+  padding: 0 0.5rem;
+  display: inline-block;
+  font-weight: bold;
 
-      border-top: 3px solid transparent;
-      border-bottom: 3px solid transparent;
+  line-height: 100%;
 
-      &:hover {
-        border-bottom: 3px solid ${(props) => props.theme["blue-dark"]};
-      }
+  transition: all 0.2s linear;
 
-      &.active {
-        color: ${(props) => props.theme["blue-dark"]};
-      }
-    }
+  &:hover {
+    filter: opacity(0.7);
   }
+
+  ${(props) =>
+    props.active &&
+    css`
+      ::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        bottom: -1rem;
+        border-radius: 3px 3px 0 0;
+        left: 0;
+
+        background-color: ${(props) => props.theme.blue};
+      }
+    `}
 `;

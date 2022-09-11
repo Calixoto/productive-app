@@ -12,11 +12,11 @@ export function TaskBoard() {
 
   function handleGetText(value: string) {
     if (newTask[0].text === "") {
-      setNewTask([{ id: 0, text: value, isCompleted: false }]);
+      setNewTask(() => [{ id: 0, text: value, isCompleted: false }]);
     } else {
-      setNewTask([
-        ...newTask,
-        { id: newTask.length, text: value, isCompleted: false },
+      setNewTask((state) => [
+        ...state,
+        { id: state.length, text: value, isCompleted: false },
       ]);
     }
   }
@@ -51,13 +51,22 @@ export function TaskBoard() {
     );
   }
 
-  console.log(newTask);
+  useEffect(() => {
+    const storagedTask = localStorage.getItem("@to-do:task-state-1.0.0");
+
+    if (storagedTask) {
+      console.log("dale");
+      setNewTask(JSON.parse(storagedTask));
+    }
+  }, []);
 
   useEffect(() => {
     if (newTask.length === 1 && newTask[0].text === "") {
       setCountCompletedTask(0);
       setIsEmpty(true);
+      localStorage.removeItem("@to-do:task-state-1.0.0");
     } else {
+      localStorage.setItem("@to-do:task-state-1.0.0", JSON.stringify(newTask));
       setIsEmpty(false);
     }
   }, [newTask]);
