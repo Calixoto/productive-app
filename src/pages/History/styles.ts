@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const HistoryContainer = styled.main`
   flex: 1;
-  padding: 3.5rem;
+  padding: 2rem 3.5rem 0;
 
   display: flex;
   flex-direction: column;
@@ -15,8 +15,21 @@ export const HistoryContainer = styled.main`
 
 export const HistoryList = styled.div`
   flex: 1;
+  max-height: 400px;
   overflow: auto;
   margin-top: 2rem;
+  padding-right: 0.25rem;
+  border-radius: 8px;
+
+  &::-webkit-scrollbar {
+    width: 2px;
+    border-radius: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${(props) => props.theme["gray-500"]};
+    border-radius: 15px;
+  }
 
   table {
     width: 100%;

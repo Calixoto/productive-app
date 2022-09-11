@@ -9,6 +9,7 @@ export const EmptyTasksContainer = styled.div`
   padding: 4rem 1.5rem;
   border-top: 1px solid var(--gray-400);
   border-radius: 0.5rem;
+  width: 100%;
 
   p {
     font-size: 1rem;

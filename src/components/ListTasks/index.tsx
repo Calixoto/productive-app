@@ -4,7 +4,7 @@ import checkedHover from "../../assets/checked-hover.svg";
 import checked from "../../assets/checked.svg";
 import trashDanger from "../../assets/trash-danger.svg";
 import trash from "../../assets/trash.svg";
-import { ListTaskContainer } from "./styles";
+import { ListTaskContainer, ListTaskContent, TaskActionButton } from "./styles";
 interface ListTasksProps {
   taskText: string;
   handleCompleteTask: () => void;
@@ -15,13 +15,13 @@ interface ListTasksProps {
 export function ListTasks({
   taskText,
   handleCompleteTask,
-  isActive = false,
+  isActive,
   handleDeleteTask,
 }: ListTasksProps) {
   return (
     <ListTaskContainer>
-      <div className="active">
-        <button type="button" onClick={handleCompleteTask}>
+      <ListTaskContent active={isActive}>
+        <TaskActionButton type="button" onClick={handleCompleteTask}>
           <img
             src={!isActive ? check : checked}
             style={{ width: "17px", height: "17px" }}
@@ -31,17 +31,17 @@ export function ListTasks({
             className="onHover"
             style={{ width: "17px", height: "17px" }}
           />
-        </button>
+        </TaskActionButton>
         <p>{taskText}</p>
-        <button type="button" onClick={handleDeleteTask}>
+        <TaskActionButton type="button" onClick={handleDeleteTask}>
           <img src={trash} style={{ width: "12px", height: "14px" }} />
           <img
             src={trashDanger}
             className="onHover"
             style={{ width: "12px", height: "14px" }}
           />
-        </button>
-      </div>
+        </TaskActionButton>
+      </ListTaskContent>
     </ListTaskContainer>
   );
 }

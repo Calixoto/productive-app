@@ -1,12 +1,13 @@
-import { Outlet } from "react-router-dom";
-import { Header } from "../../components/Header";
+import { Outlet, useLocation } from "react-router-dom";
+import { HeaderTimer } from "../../components/HeaderTimer";
 
 import { LayoutContainer } from "./styles";
 
 export function DefaultLayout() {
+  const { pathname } = useLocation();
   return (
     <LayoutContainer>
-      <Header />
+      {pathname === "/" || pathname === "/history" ? <HeaderTimer /> : null}
       <Outlet />
     </LayoutContainer>
   );
