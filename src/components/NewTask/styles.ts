@@ -16,6 +16,7 @@ export const NewTaskForm = styled.form`
     width: 100%;
     background: var(--gray-500);
     border: 1px solid var(--gray-700);
+    color: inherit;
     border-radius: 0.5rem;
     padding: 1rem;
     font-size: 1rem;
