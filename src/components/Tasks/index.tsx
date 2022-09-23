@@ -1,32 +1,22 @@
 import { useEffect, useState } from "react";
+import { useTasks } from "../../contexts/TasksContext";
 import { EmptyTasks } from "../EmptyTasks";
 import { ListTasks } from "../ListTasks";
 import { HeaderTask } from "./HeaderTask";
 import { ListTaskWrapper, TasksContainer } from "./styles";
 
-interface TasksProps {
-  isEmpty: boolean;
-  countCompletedTask: number;
-  handleDeleteTask: (id: number) => void;
-  handleCompleteTask: (id: number) => void;
-  tasks: {
-    id: number;
-    text: string;
-    isCompleted: boolean;
-  }[];
-}
-
-export function Tasks({
-  tasks,
-  isEmpty,
-  handleCompleteTask,
-  countCompletedTask,
-  handleDeleteTask,
-}: TasksProps) {
+export function Tasks({}) {
+  const {
+    handleDeleteTask,
+    handleCompleteTask,
+    tasks,
+    countCompletedTask,
+    isEmpty,
+  } = useTasks();
   const [countTask, setCountTask] = useState(0);
 
   useEffect(() => {
-    if (tasks[0].text === "") {
+    if (tasks[0]?.text === "") {
       setCountTask(0);
     } else {
       setCountTask(tasks.length);
